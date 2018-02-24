@@ -9,7 +9,7 @@ public class FraccionesTest {
 	
 	@Test
 	public void simplificarFraccionDosCuartos() {
-		assertThat(new Fraccion(2,4).simplificar() ,is(new Fraccion(1,2)));		
+		assertThat(new Fraccion(2,4).simplificar() ,is(new Fraccion(2,2)));		
 	}
 
 }
