@@ -6,11 +6,11 @@ package com.jimenaleon.fraccionarios;
  */
 public class App 
 {
-	static Fraccion test = new Fraccion(2,4);
+	static Fraccion test = new Fraccion(2,5);
 	
     public static void main( String[] args )
     {
-    	test.simplificar();
+    	test.dividir(3,4);
         System.out.println( test.numerador );
         System.out.println( "-" );
         System.out.println( test.denominador );

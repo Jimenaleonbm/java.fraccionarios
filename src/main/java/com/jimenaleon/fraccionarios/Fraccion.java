@@ -1,6 +1,6 @@
 package com.jimenaleon.fraccionarios;
 
-public class Fraccion {
+public class Fraccion implements Comparable<Fraccion>{
 
 	int numerador;
 	int denominador;
@@ -28,7 +28,12 @@ public class Fraccion {
 	
 	public Fraccion sumar(int numeradorFraccion2, int denominadorFraccion2) {
 		
-		this.numerador = (this.numerador * denominadorFraccion2) + (this.denominador * numeradorFraccion2);
+		if(this.denominador != denominadorFraccion2) {			
+			this.numerador = (this.numerador * denominadorFraccion2) + (this.denominador * numeradorFraccion2);
+		}else {
+			this.numerador = this.numerador + numeradorFraccion2;
+		}
+		
 		this.denominador = hallarDenominador(this.denominador, denominadorFraccion2);
 		
 		return this;
@@ -36,8 +41,11 @@ public class Fraccion {
 	
 	
 	public Fraccion restar(int numeradorFraccion2, int denominadorFraccion2) {
-
-		this.numerador = (this.numerador * denominadorFraccion2) - (this.denominador * numeradorFraccion2);
+		if(this.denominador != denominadorFraccion2) {			
+			this.numerador = (this.numerador * denominadorFraccion2) - (this.denominador * numeradorFraccion2);
+		}else {
+			this.numerador = this.numerador - numeradorFraccion2;
+		}
 		this.denominador = hallarDenominador(this.denominador, denominadorFraccion2);
 		
 		return this;
@@ -70,6 +78,16 @@ public class Fraccion {
 	@Override
 	public String toString() {
 		return String.format("%s/%s", numerador, denominador);
+	}
+
+	public int compareTo(Fraccion o) {
+		int numeradorresult = Integer.compare(this.numerador, o.numerador);
+		int denominadorresult = Integer.compare(this.denominador, o.denominador);
+		
+		if(numeradorresult == 1 && denominadorresult == 1 ) {
+			return 1;
+		}
+		return Integer.compare(numeradorresult, denominadorresult);			
 	}
 	
 }
